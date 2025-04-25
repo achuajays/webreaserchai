@@ -25,9 +25,11 @@ const ChatMessage = ({ message, isBot }: ChatMessageProps) => {
         isBot ? "bg-white text-gray-800 border prose prose-sm max-w-none" : "bg-blue-500 text-white"
       )}>
         {isBot ? (
-          <ReactMarkdown className="break-words">
-            {message}
-          </ReactMarkdown>
+          <div className="markdown-content">
+            <ReactMarkdown className="break-words prose prose-sm max-w-none">
+              {message}
+            </ReactMarkdown>
+          </div>
         ) : (
           <p className="whitespace-pre-wrap break-words text-sm">{message}</p>
         )}
