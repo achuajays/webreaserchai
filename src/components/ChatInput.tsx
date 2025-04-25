@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { MessageSquare } from 'lucide-react';
+import { MessageSquare, Loader2 } from 'lucide-react';
 
 interface ChatInputProps {
   onSend: (message: string) => void;
@@ -30,8 +30,12 @@ const ChatInput = ({ onSend, isLoading }: ChatInputProps) => {
         className="flex-1"
       />
       <Button type="submit" disabled={isLoading || !message.trim()}>
-        <MessageSquare className="h-5 w-5" />
-        <span className="ml-2">Send</span>
+        {isLoading ? (
+          <Loader2 className="h-5 w-5 animate-spin" />
+        ) : (
+          <MessageSquare className="h-5 w-5" />
+        )}
+        <span className="ml-2">{isLoading ? 'Loading...' : 'Send'}</span>
       </Button>
     </form>
   );

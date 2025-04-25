@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import ChatMessage from './ChatMessage';
 import ChatInput from './ChatInput';
 import { useToast } from '@/components/ui/use-toast';
+import { Loader2 } from 'lucide-react';
 
 interface Message {
   text: string;
@@ -59,7 +60,7 @@ const ChatContainer = () => {
 
   return (
     <div className="flex flex-col h-[80vh] mx-auto max-w-3xl bg-white rounded-lg shadow-lg">
-      <div className="flex-1 overflow-y-auto p-4">
+      <div className="flex-1 overflow-y-auto p-4 relative">
         {messages.map((message, index) => (
           <ChatMessage
             key={index}
@@ -67,6 +68,11 @@ const ChatContainer = () => {
             isBot={message.isBot}
           />
         ))}
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-white/70 z-10">
+            <Loader2 className="h-10 w-10 animate-spin text-blue-500" />
+          </div>
+        )}
         <div ref={messagesEndRef} />
       </div>
       <ChatInput onSend={handleSendMessage} isLoading={isLoading} />
