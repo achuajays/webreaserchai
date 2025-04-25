@@ -2,6 +2,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { Bot, User } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 
 interface ChatMessageProps {
   message: string;
@@ -21,9 +22,15 @@ const ChatMessage = ({ message, isBot }: ChatMessageProps) => {
       )}
       <div className={cn(
         "max-w-[80%] rounded-xl px-4 py-2 shadow-sm",
-        isBot ? "bg-white text-gray-800 border" : "bg-blue-500 text-white"
+        isBot ? "bg-white text-gray-800 border prose prose-sm max-w-none" : "bg-blue-500 text-white"
       )}>
-        <p className="whitespace-pre-wrap break-words text-sm">{message}</p>
+        {isBot ? (
+          <ReactMarkdown className="break-words">
+            {message}
+          </ReactMarkdown>
+        ) : (
+          <p className="whitespace-pre-wrap break-words text-sm">{message}</p>
+        )}
       </div>
       {!isBot && (
         <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0">
