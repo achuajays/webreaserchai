@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
+import { Bot, User } from 'lucide-react';
 
 interface ChatMessageProps {
   message: string;
@@ -10,15 +11,25 @@ interface ChatMessageProps {
 const ChatMessage = ({ message, isBot }: ChatMessageProps) => {
   return (
     <div className={cn(
-      "flex w-full mb-4",
+      "flex w-full mb-4 items-start gap-2",
       isBot ? "justify-start" : "justify-end"
     )}>
+      {isBot && (
+        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+          <Bot className="w-5 h-5 text-blue-600" />
+        </div>
+      )}
       <div className={cn(
-        "max-w-[80%] rounded-lg px-4 py-2",
-        isBot ? "bg-blue-500 text-white" : "bg-gray-100 text-gray-900"
+        "max-w-[80%] rounded-xl px-4 py-2 shadow-sm",
+        isBot ? "bg-white text-gray-800 border" : "bg-blue-500 text-white"
       )}>
-        <p className="whitespace-pre-wrap break-words">{message}</p>
+        <p className="whitespace-pre-wrap break-words text-sm">{message}</p>
       </div>
+      {!isBot && (
+        <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0">
+          <User className="w-5 h-5 text-white" />
+        </div>
+      )}
     </div>
   );
 };
