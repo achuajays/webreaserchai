@@ -1,12 +1,9 @@
-
 import { SearchIcon, BookOpenCheck, Newspaper, BrainCircuit } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-
 const Header = () => {
-  return (
-    <div className="w-full max-w-4xl mx-auto space-y-6 mb-8">
+  return <div className="w-full max-w-4xl mx-auto space-y-6 mb-8">
       <div className="text-center space-y-2">
-        <h1 className="text-4xl font-bold text-gray-900">Research Agent</h1>
+        <h1 className="text-4xl font-bold text-gray-900">WebResearchAI </h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           A powerful AI-driven research assistant that performs comprehensive web searches, data extraction, and analysis using advanced language models.
         </p>
@@ -45,8 +42,6 @@ const Header = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Header;
