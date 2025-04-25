@@ -1,41 +1,8 @@
-import { SearchIcon, BookOpenCheck, Newspaper, BrainCircuit, MessageSquare } from 'lucide-react';
+import { SearchIcon, BookOpenCheck, Newspaper, BrainCircuit } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import ChatContainer from './ChatContainer';
-import { useState } from 'react';
-
 const Header = () => {
-  const [isChatOpen, setIsChatOpen] = useState(false);
-
-  const toggleChat = () => {
-    setIsChatOpen(!isChatOpen);
-  };
-
-  return (
-    <div className="w-full max-w-4xl mx-auto space-y-6 mb-8 relative">
-      <div className="absolute top-0 right-0 z-10">
-        <Button 
-          variant="outline" 
-          size="icon" 
-          onClick={toggleChat}
-          className="rounded-full"
-        >
-          <MessageSquare className="h-5 w-5" />
-        </Button>
-      </div>
-      
-      <div className="text-center space-y-2 relative">
-        <div className="absolute left-0 top-1/2 transform -translate-y-1/2">
-          <Button 
-            variant="outline" 
-            size="icon" 
-            onClick={toggleChat}
-            className="rounded-full"
-          >
-            <MessageSquare className="h-5 w-5" />
-          </Button>
-        </div>
-        
+  return <div className="w-full max-w-4xl mx-auto space-y-6 mb-8">
+      <div className="text-center space-y-2">
         <h1 className="text-4xl font-bold text-gray-900">WebResearchAI </h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           A powerful AI-driven research assistant that performs comprehensive web searches, data extraction, and analysis using advanced language models.
@@ -75,16 +42,6 @@ const Header = () => {
           </CardContent>
         </Card>
       </div>
-
-      {isChatOpen && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center">
-          <div className="w-full max-w-3xl h-[80vh]">
-            <ChatContainer onClose={() => setIsChatOpen(false)} />
-          </div>
-        </div>
-      )}
-    </div>
-  );
+    </div>;
 };
-
 export default Header;
